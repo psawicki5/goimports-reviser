@@ -27,7 +27,7 @@ func TestGoModRootPathAndName(t *testing.T) {
 					return dir
 				}(),
 			},
-			want:    "github.com/incu6us/goimports-reviser",
+			want:    "github.com/psawicki5/goimports-reviser",
 			wantErr: false,
 		},
 		{

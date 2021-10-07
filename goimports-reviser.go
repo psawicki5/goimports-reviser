@@ -9,9 +9,8 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-
-	"github.com/incu6us/goimports-reviser/v2/pkg/module"
-	"github.com/incu6us/goimports-reviser/v2/reviser"
+	"github.com/psawicki5/goimports-reviser/v2/pkg/module"
+	"github.com/psawicki5/goimports-reviser/v2/reviser"
 )
 
 const (

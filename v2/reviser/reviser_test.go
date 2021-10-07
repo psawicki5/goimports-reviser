@@ -25,14 +25,14 @@ func TestExecute(t *testing.T) {
 		{
 			name: "success with comments",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
 	"log"
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 
 	"bytes"
 
@@ -48,7 +48,7 @@ import (
 	"bytes"
 	"log"
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 
 	"github.com/pkg/errors"
 )
@@ -62,14 +62,14 @@ import (
 		{
 			name: "success with std & project deps",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
 	"log"
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 
 	"bytes"
 
@@ -85,7 +85,7 @@ import (
 	"bytes"
 	"log"
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -97,7 +97,7 @@ import (
 		{
 			name: "success with std & third-party deps",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 		
@@ -130,7 +130,7 @@ import (
 		{
 			name: "success with std deps only",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 		
@@ -159,7 +159,7 @@ import (
 		{
 			name: "success with third-party deps only",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -186,13 +186,13 @@ import (
 		{
 			name: "success with project deps only",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 
 )
 
@@ -202,7 +202,7 @@ import (
 			want: `package testdata
 
 import (
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -214,7 +214,7 @@ import (
 		{
 			name: "success with clear doc for import",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -223,7 +223,7 @@ import (
 
 
 	// test
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -234,7 +234,7 @@ import (
 import (
 	"fmt"
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -246,12 +246,12 @@ import (
 		{
 			name: "success with comment for import",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg" // test1
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg" // test1
 	
 	"fmt" //test2
 	// this should be skipped
@@ -265,7 +265,7 @@ import (
 import (
 	"fmt" // test2
 
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg" // test1
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg" // test1
 )
 
 // nolint:gomnd
@@ -277,12 +277,12 @@ import (
 		{
 			name: "success with no changes",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -291,7 +291,7 @@ import (
 			want: `package testdata
 
 import (
-	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+	"github.com/psawicki5/goimports-reviser/testdata/innderpkg"
 )
 
 // nolint:gomnd
@@ -302,7 +302,7 @@ import (
 		{
 			name: "success no changes by imports and comments",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -311,7 +311,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/incu6us/goimports-reviser/pkg/somepkg"
+	"github.com/psawicki5/goimports-reviser/pkg/somepkg"
 
 	_ "github.com/lib/pq" // configure database/sql with postgres driver
 	"github.com/pkg/errors"
@@ -326,7 +326,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/incu6us/goimports-reviser/pkg/somepkg"
+	"github.com/psawicki5/goimports-reviser/pkg/somepkg"
 
 	_ "github.com/lib/pq" // configure database/sql with postgres driver
 	"github.com/pkg/errors"
@@ -339,7 +339,7 @@ import (
 		{
 			name: "success with multiple import statements",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -402,7 +402,7 @@ func TestExecute_WithRemoveUnusedImports(t *testing.T) {
 		{
 			name: "remove unused import",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -435,7 +435,7 @@ func main() {
 		{
 			name: "remove unused import with alias",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -468,7 +468,7 @@ func main() {
 		{
 			name: "use loaded import but not used",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 
@@ -502,7 +502,7 @@ func main() {
 		{
 			name: "success with comments before imports",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `// Some comments are here
 package testdata
@@ -540,7 +540,7 @@ func main() {
 		{
 			name: "success without imports",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `// Some comments are here
 package main
@@ -585,7 +585,7 @@ const webDirectory = "web"
 		{
 			name: "cleanup empty import block",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `// Some comments are here
 package testdata
@@ -645,7 +645,7 @@ func TestExecute_WithAliasForVersionSuffix(t *testing.T) {
 		{
 			name: "success with set alias",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package main
 import(
@@ -679,7 +679,7 @@ func main() {
 		{
 			name: "success with github.com/pkg/errors",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package main
 import(
@@ -748,7 +748,56 @@ func TestExecute_WithLocalPackagePrefixes(t *testing.T) {
 		{
 			name: "group local packages",
 			args: args{
-				projectName:      "github.com/incu6us/goimports-reviser",
+				projectName:      "github.com/szwagier-company",
+				localPkgPrefixes: "github.com/szwagier-company/srv-serwus",
+				filePath:         "./testdata/example.go",
+				fileContent: `package testdata
+
+import (
+	"context"
+
+	sq "github.com/Masterminds/squirrel"
+	"github.com/lib/pq"
+	"github.com/pkg/errors"
+	"github.com/szwagier-company/mirek"
+
+	"github.com/szwagier-company/srv-serwus/pkg/book/domain"
+	"github.com/szwagier-company/srv-serwus/pkg/platform/database"
+)
+
+// nolint:gomnd
+func main(){
+  _ = fmt.Println("test")
+}
+`,
+			},
+			want: `package testdata
+
+import (
+	"context"
+
+	"github.com/szwagier-company/srv-serwus/pkg/book/domain"
+	"github.com/szwagier-company/srv-serwus/pkg/platform/database"
+
+	"github.com/szwagier-company/mirek"
+
+	sq "github.com/Masterminds/squirrel"
+	"github.com/lib/pq"
+	"github.com/pkg/errors"
+)
+
+// nolint:gomnd
+func main() {
+	_ = fmt.Println("test")
+}
+`,
+			wantChange: true,
+			wantErr:    false,
+		},
+		{
+			name: "group local packages",
+			args: args{
+				projectName:      "github.com/psawicki5/goimports-reviser",
 				localPkgPrefixes: "goimports-reviser",
 				filePath:         "./testdata/example.go",
 				fileContent: `package testdata
@@ -756,7 +805,7 @@ func TestExecute_WithLocalPackagePrefixes(t *testing.T) {
 import (
 	"fmt" //fmt package
 	"github.com/pkg/errors" //custom package
-	"github.com/incu6us/goimports-reviser/pkg"
+	"github.com/psawicki5/goimports-reviser/pkg"
 	"goimports-reviser/pkg"
 )
 
@@ -773,7 +822,7 @@ import (
 
 	"goimports-reviser/pkg"
 
-	"github.com/incu6us/goimports-reviser/pkg"
+	"github.com/psawicki5/goimports-reviser/pkg"
 
 	"github.com/pkg/errors" // custom package
 )
@@ -790,14 +839,14 @@ func main() {
 			name: "group local packages",
 			args: args{
 				projectName:      "goimports-reviser",
-				localPkgPrefixes: "github.com/incu6us/goimports-reviser",
+				localPkgPrefixes: "github.com/psawicki5/goimports-reviser",
 				filePath:         "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
 	"fmt" //fmt package
 	"github.com/pkg/errors" //custom package
-	"github.com/incu6us/goimports-reviser/pkg"
+	"github.com/psawicki5/goimports-reviser/pkg"
 	"goimports-reviser/pkg"
 )
 // nolint:gomnd
@@ -811,7 +860,7 @@ func main(){
 import (
 	"fmt" // fmt package
 
-	"github.com/incu6us/goimports-reviser/pkg"
+	"github.com/psawicki5/goimports-reviser/pkg"
 
 	"goimports-reviser/pkg"
 
@@ -829,18 +878,18 @@ func main() {
 		{
 			name: "group local packages separately from project files",
 			args: args{
-				projectName:      "github.com/incu6us/goimports-reviser/code/thispkg",
-				localPkgPrefixes: "github.com/incu6us/goimports-reviser/code",
+				projectName:      "github.com/psawicki5/goimports-reviser/code",
+				localPkgPrefixes: "github.com/psawicki5/goimports-reviser/code/thispkg",
 				filePath:         "./testdata/example.go",
 				fileContent: `package testdata
 
 import (
 	"fmt"
 	"github.com/3rdparty/pkg"
-	"github.com/incu6us/goimports-reviser/code/foopkg"
-	"github.com/incu6us/goimports-reviser/code/otherpkg"
-	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
-	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
+	"github.com/psawicki5/goimports-reviser/code/foopkg"
+	"github.com/psawicki5/goimports-reviser/code/otherpkg"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/stuff"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/morestuff"
 )
 
 // nolint:gomnd
@@ -854,11 +903,11 @@ func main(){
 import (
 	"fmt"
 
-	"github.com/incu6us/goimports-reviser/code/foopkg"
-	"github.com/incu6us/goimports-reviser/code/otherpkg"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/morestuff"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/stuff"
 
-	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
-	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
+	"github.com/psawicki5/goimports-reviser/code/foopkg"
+	"github.com/psawicki5/goimports-reviser/code/otherpkg"
 
 	"github.com/3rdparty/pkg"
 )
@@ -874,7 +923,7 @@ func main() {
 		{
 			name: "check without local packages",
 			args: args{
-				projectName:      "github.com/incu6us/goimports-reviser/code/thispkg",
+				projectName:      "github.com/psawicki5/goimports-reviser/code/thispkg",
 				localPkgPrefixes: "",
 				filePath:         "./testdata/example.go",
 				fileContent: `package testdata
@@ -882,10 +931,10 @@ func main() {
 import (
 	"fmt"
 	"github.com/3rdparty/pkg"
-	"github.com/incu6us/goimports-reviser/code/foopkg"
-	"github.com/incu6us/goimports-reviser/code/otherpkg"
-	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
-	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
+	"github.com/psawicki5/goimports-reviser/code/foopkg"
+	"github.com/psawicki5/goimports-reviser/code/otherpkg"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/stuff"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/morestuff"
 )
 
 // nolint:gomnd
@@ -899,12 +948,12 @@ func main(){
 import (
 	"fmt"
 
-	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
-	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/morestuff"
+	"github.com/psawicki5/goimports-reviser/code/thispkg/stuff"
 
 	"github.com/3rdparty/pkg"
-	"github.com/incu6us/goimports-reviser/code/foopkg"
-	"github.com/incu6us/goimports-reviser/code/otherpkg"
+	"github.com/psawicki5/goimports-reviser/code/foopkg"
+	"github.com/psawicki5/goimports-reviser/code/otherpkg"
 )
 
 // nolint:gomnd
@@ -952,7 +1001,7 @@ func TestExecute_WithFormat(t *testing.T) {
 		{
 			name: "success",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 type SomeStruct struct{}
@@ -985,7 +1034,7 @@ func test1() {}
 		{
 			name: "success with comments",
 			args: args{
-				projectName: "github.com/incu6us/goimports-reviser",
+				projectName: "github.com/psawicki5/goimports-reviser",
 				filePath:    "./testdata/example.go",
 				fileContent: `package testdata
 // test -  test comment

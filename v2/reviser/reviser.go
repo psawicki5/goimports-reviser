@@ -13,9 +13,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/incu6us/goimports-reviser/v2/pkg/astutil"
-	"github.com/incu6us/goimports-reviser/v2/pkg/std"
 	"github.com/pkg/errors"
+
+	"github.com/psawicki5/goimports-reviser/v2/pkg/astutil"
+	"github.com/psawicki5/goimports-reviser/v2/pkg/std"
 )
 
 const (
@@ -176,7 +177,7 @@ func groupImports(
 
 		var isLocalPackageFound bool
 		for _, localPackagePrefix := range localPackagePrefixes {
-			if strings.HasPrefix(pkgWithoutAlias, localPackagePrefix) && !strings.HasPrefix(pkgWithoutAlias, projectName) {
+			if strings.HasPrefix(pkgWithoutAlias, localPackagePrefix) {
 				projectLocalPkgs = append(projectLocalPkgs, imprt)
 				isLocalPackageFound = true
 				break
@@ -387,7 +388,7 @@ func rebuildImports(
 
 		linesCounter--
 
-		if linesCounter == 0 && len(projectImports) > 0 {
+		if linesCounter == 0 && (len(projectImports) > 0 || len(generalImports) > 0) {
 			spec = &ast.ImportSpec{Path: &ast.BasicLit{Value: "", Kind: token.STRING}}
 
 			specs = append(specs, spec)
