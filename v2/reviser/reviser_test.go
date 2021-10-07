@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"testing"
 
+	_ "github.com/go-pg/pg/v9"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -47,9 +48,9 @@ import (
 	"bytes"
 	"log"
 
-	"github.com/pkg/errors"
-
 	"github.com/incu6us/goimports-reviser/testdata/innderpkg"
+
+	"github.com/pkg/errors"
 )
 
 // nolint:gomnd
@@ -310,11 +311,11 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/incu6us/goimports-reviser/pkg/somepkg"
+
 	_ "github.com/lib/pq" // configure database/sql with postgres driver
 	"github.com/pkg/errors"
 	"go.uber.org/fx"
-
-	"github.com/incu6us/goimports-reviser/pkg/somepkg"
 )
 `,
 			},
@@ -325,11 +326,11 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/incu6us/goimports-reviser/pkg/somepkg"
+
 	_ "github.com/lib/pq" // configure database/sql with postgres driver
 	"github.com/pkg/errors"
 	"go.uber.org/fx"
-
-	"github.com/incu6us/goimports-reviser/pkg/somepkg"
 )
 `,
 			wantChange: false,
@@ -770,11 +771,11 @@ func main(){
 import (
 	"fmt" // fmt package
 
-	"github.com/pkg/errors" // custom package
-
 	"goimports-reviser/pkg"
 
 	"github.com/incu6us/goimports-reviser/pkg"
+
+	"github.com/pkg/errors" // custom package
 )
 
 // nolint:gomnd
@@ -810,11 +811,11 @@ func main(){
 import (
 	"fmt" // fmt package
 
-	"github.com/pkg/errors" // custom package
-
 	"github.com/incu6us/goimports-reviser/pkg"
 
 	"goimports-reviser/pkg"
+
+	"github.com/pkg/errors" // custom package
 )
 
 // nolint:gomnd
@@ -853,13 +854,13 @@ func main(){
 import (
 	"fmt"
 
-	"github.com/3rdparty/pkg"
-
 	"github.com/incu6us/goimports-reviser/code/foopkg"
 	"github.com/incu6us/goimports-reviser/code/otherpkg"
 
 	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
 	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
+
+	"github.com/3rdparty/pkg"
 )
 
 // nolint:gomnd
@@ -898,12 +899,12 @@ func main(){
 import (
 	"fmt"
 
+	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
+	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
+
 	"github.com/3rdparty/pkg"
 	"github.com/incu6us/goimports-reviser/code/foopkg"
 	"github.com/incu6us/goimports-reviser/code/otherpkg"
-
-	"github.com/incu6us/goimports-reviser/code/thispkg/morestuff"
-	"github.com/incu6us/goimports-reviser/code/thispkg/stuff"
 )
 
 // nolint:gomnd

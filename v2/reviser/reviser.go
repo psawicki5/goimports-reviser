@@ -15,6 +15,7 @@ import (
 
 	"github.com/incu6us/goimports-reviser/v2/pkg/astutil"
 	"github.com/incu6us/goimports-reviser/v2/pkg/std"
+	"github.com/pkg/errors"
 )
 
 const (
@@ -72,19 +73,19 @@ func (o Options) shouldFormat() bool {
 func Execute(projectName, filePath, localPkgPrefixes string, options ...Option) ([]byte, bool, error) {
 	originalContent, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "reading file")
 	}
 
 	fset := token.NewFileSet()
 
 	pf, err := parser.ParseFile(fset, "", originalContent, parser.ParseComments)
 	if err != nil {
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "parsing file")
 	}
 
 	importsWithMetadata, err := parseImports(pf, filePath, options)
 	if err != nil {
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "parsing import")
 	}
 
 	stdImports, generalImports, projectLocalPkgs, projectImports := groupImports(
@@ -104,12 +105,12 @@ func Execute(projectName, filePath, localPkgPrefixes string, options ...Option) 
 
 	fixedImportsContent, err := generateFile(fset, pf)
 	if err != nil {
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "generating file")
 	}
 
 	formattedContent, err := format.Source(fixedImportsContent)
 	if err != nil {
-		return nil, false, err
+		return nil, false, errors.Wrap(err, "sourcing")
 	}
 
 	return formattedContent, !bytes.Equal(originalContent, formattedContent), nil
@@ -377,22 +378,6 @@ func rebuildImports(
 		}
 	}
 
-	linesCounter = len(generalImports)
-	for _, generalImport := range generalImports {
-		spec := &ast.ImportSpec{
-			Path: &ast.BasicLit{Value: importWithComment(generalImport, commentsMetadata), Kind: tok},
-		}
-		specs = append(specs, spec)
-
-		linesCounter--
-
-		if linesCounter == 0 && (len(projectLocalPkgs) > 0 || len(projectImports) > 0) {
-			spec = &ast.ImportSpec{Path: &ast.BasicLit{Value: "", Kind: token.STRING}}
-
-			specs = append(specs, spec)
-		}
-	}
-
 	linesCounter = len(projectLocalPkgs)
 	for _, projectLocalPkg := range projectLocalPkgs {
 		spec := &ast.ImportSpec{
@@ -409,9 +394,25 @@ func rebuildImports(
 		}
 	}
 
+	linesCounter = len(projectImports)
 	for _, projectImport := range projectImports {
 		spec := &ast.ImportSpec{
 			Path: &ast.BasicLit{Value: importWithComment(projectImport, commentsMetadata), Kind: tok},
+		}
+		specs = append(specs, spec)
+
+		linesCounter--
+
+		if linesCounter == 0 && len(generalImports) > 0 {
+			spec = &ast.ImportSpec{Path: &ast.BasicLit{Value: "", Kind: token.STRING}}
+
+			specs = append(specs, spec)
+		}
+	}
+
+	for _, generalImport := range generalImports {
+		spec := &ast.ImportSpec{
+			Path: &ast.BasicLit{Value: importWithComment(generalImport, commentsMetadata), Kind: tok},
 		}
 		specs = append(specs, spec)
 	}
@@ -460,7 +461,7 @@ func parseImports(f *ast.File, filePath string, options Options) (map[string]*co
 	if shouldRemoveUnusedImports || shouldUseAliasForVersionSuffix {
 		packageImports, err = astutil.LoadPackageDependencies(path.Dir(filePath), astutil.ParseBuildTag(f))
 		if err != nil {
-			return nil, err
+			return nil, errors.Wrap(err, "loading package deps")
 		}
 	}
 
